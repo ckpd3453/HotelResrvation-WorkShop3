@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ReservationFunctions1 {
+public class ReservationFunctions2 {
 	
 	/**
 	 *Procedure:-
@@ -23,11 +23,11 @@ public class ReservationFunctions1 {
 	/*
 	 * 1. Created an Array List
 	 */
-	public static ArrayList<HotelDetails1> hotelList = new ArrayList<>();
+	public static ArrayList<HotelDetails2> hotelList = new ArrayList<>();
 
 	//getting hotel details into temporary object and adding into the array list
-	public static void addHotel(String name, int price) {
-		HotelDetails1 temporary = new HotelDetails1(name, price);
+	public static void addHotel(String name, int weekdayRate, int weekendRate) {
+		HotelDetails2 temporary = new HotelDetails2(name, weekdayRate, weekendRate);
 		hotelList.add(temporary);
 	}
 
@@ -36,7 +36,7 @@ public class ReservationFunctions1 {
 		return hotelList.size();
 	}
 
-	public static ArrayList<HotelDetails1> getHotelList() {
+	public static ArrayList<HotelDetails2> getHotelList() {
 		return hotelList;
 	}
 
@@ -44,8 +44,8 @@ public class ReservationFunctions1 {
 	 *  UC1
 	 *  2. Created a method to add the details of hotel
 	 */
-	public static void addHotel1(String hotelName, int rates) {
-		HotelDetails1 list = new HotelDetails1(hotelName, rates);
+	public static void addHotel1(String hotelName, int weekDayRates, int weekEndRates) {
+		HotelDetails2 list = new HotelDetails2(hotelName, weekDayRates, weekEndRates);
 		hotelList.add(list);
 	}
 
@@ -66,8 +66,7 @@ public class ReservationFunctions1 {
 		LocalDate endDateInput = LocalDate.parse(endDate, dateFormat);//Getting End Date from user
 		int noOfDaysToBook = (int) ChronoUnit.DAYS.between(startDateInput, endDateInput) + 1;//Calculating the no. of days
 		//Streaming the list of @Hotels and their @Rate and calculating the total rate of durations
-		Map<String, Integer> hotelNameToTotalCostMap = hotelList.stream()
-				.collect(Collectors.toMap(hotel -> hotel.getName(), hotel -> hotel.getPrice() * noOfDaysToBook));
+		Map<String, Integer> hotelNameToTotalCostMap = hotelList.stream().collect(Collectors.toMap(hotel -> hotel.getName(), hotel -> hotel.getWeekdayHotelRate() * noOfDaysToBook));
 		//Comparing the rates of hotels to find the cheapest rate
 		String cheapestHotelName = hotelNameToTotalCostMap.keySet().stream()
 				.min((hotel1, hotel2) -> hotelNameToTotalCostMap.get(hotel1) - hotelNameToTotalCostMap.get(hotel2))
