@@ -1,6 +1,6 @@
 package com.bridgelabz.workshop.hotelReservation;
 
-public class HotelDetails2 {
+public class HotelDetails3 {
 	private String name;
 	private int weekdayHotelRate;
 	private int weekendHotelRate;
@@ -9,7 +9,7 @@ public class HotelDetails2 {
 	 * 1. Created a constructor
 	 */
 	
-	public HotelDetails2(String name, int weekdayHotelRate, int weekendHotelRate) {
+	public HotelDetails3(String name, int weekdayHotelRate, int weekendHotelRate) {
 		super();
 		this.name = name;
 		this.weekdayHotelRate = weekdayHotelRate;
