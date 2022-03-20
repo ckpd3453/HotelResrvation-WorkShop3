@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ReservationFunctions3 {
+public class ReservationFunctions4 {
 	
 	/**
 	 *Procedure:-
@@ -26,11 +26,13 @@ public class ReservationFunctions3 {
 	/*
 	 * 1. Created an Array List
 	 */
-	public static ArrayList<HotelDetails3> hotelList = new ArrayList<>();
+	public static ArrayList<HotelDetails4> hotelList = new ArrayList<>();
 
-	//getting hotel details into temporary object and adding into the array list
-	public static void addHotel(String name, int weekdayRate, int weekendRate) {
-		HotelDetails3 temporary = new HotelDetails3(name, weekdayRate, weekendRate);
+	/*
+	 * 2. getting hotel details into temporary object and adding into the array list
+	 */
+	public static void addHotel(String name, int weekdayRate, int weekendRate, int rating) {
+		HotelDetails4 temporary = new HotelDetails4(name, weekdayRate, weekendRate, rating);
 		hotelList.add(temporary);
 	}
 
@@ -39,19 +41,10 @@ public class ReservationFunctions3 {
 		return hotelList.size();
 	}
 
-	public static ArrayList<HotelDetails3> getHotelList() {
+	public static ArrayList<HotelDetails4> getHotelList() {
 		return hotelList;
 	}
-
-	/*
-	 *  UC1
-	 *  2. Created a method to add the details of hotel
-	 */
-	public static void addHotel1(String hotelName, int weekDayRates, int weekEndRates) {
-		HotelDetails3 list = new HotelDetails3(hotelName, weekDayRates, weekEndRates);
-		hotelList.add(list);
-	}
-
+	
 	/*
 	 * 3. Created a method to display list
 	 */

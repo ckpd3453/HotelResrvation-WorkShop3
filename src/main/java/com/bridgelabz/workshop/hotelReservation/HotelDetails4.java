@@ -1,23 +1,33 @@
 package com.bridgelabz.workshop.hotelReservation;
 
-public class HotelDetails3 {
+public class HotelDetails4 {
 	private String name;
 	private int weekdayHotelRate;
 	private int weekendHotelRate;
+	private int rating;
 
 	/**
 	 * 1. Created a constructor
 	 */
-	
-	public HotelDetails3(String name, int weekdayHotelRate, int weekendHotelRate) {
+
+	public HotelDetails4(String name, int weekdayHotelRate, int weekendHotelRate, int rating) {
 		super();
 		this.name = name;
 		this.weekdayHotelRate = weekdayHotelRate;
 		this.weekendHotelRate = weekendHotelRate;
+		this.rating = rating;
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 	public void setName(String name) {
@@ -42,9 +52,8 @@ public class HotelDetails3 {
 
 	@Override
 	public String toString() {
-		return "\nHotelDetails2 [name=" + name + ", weekdayHotelRate=" + weekdayHotelRate + ", weekendHotelRate="
-				+ weekendHotelRate + "]";
+		return "\nHotelDetails4 [name=" + name + ", weekdayHotelRate=" + weekdayHotelRate + ", weekendHotelRate="
+				+ weekendHotelRate + ", rating=" + rating + "]";
 	}
-
 
 }
