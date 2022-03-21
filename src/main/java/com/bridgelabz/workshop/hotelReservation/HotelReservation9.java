@@ -2,7 +2,7 @@ package com.bridgelabz.workshop.hotelReservation;
 
 import java.util.Scanner;
 
-public class HotelReservation7 {
+public class HotelReservation9 {
 
 	/**
 	 * Procedure:- 
@@ -33,9 +33,9 @@ public class HotelReservation7 {
 			int weekEndRatesRewards = sc.nextInt();
 			System.out.println("Give Rating to the Hotels : ");
 			int rating = sc.nextInt();
-			ReservationFunctions7.addHotel(hotelName, weekDayRatesRegular,weekEndRatesRegular, weekDayRatesRewards, weekEndRatesRewards, rating);
+			ReservationFunctions9.addHotel(hotelName, weekDayRatesRegular,weekEndRatesRegular, weekDayRatesRewards, weekEndRatesRewards, rating);
 		}
-		ReservationFunctions7.showHotel();
+		ReservationFunctions9.showHotel();
 
 		/*
 		 * UC-2 To find Cheapest rate on given date intervals
@@ -44,8 +44,8 @@ public class HotelReservation7 {
 		String sd = sc.next();
 		System.out.println("Enter the end date (DD-MMM-YYYY)");
 		String ed = sc.next();
-		ReservationFunctions7.findCheapestHotel(sd, ed);
-		ReservationFunctions7.getCheapestBestRatedHotel(sd, ed);
-		ReservationFunctions7.getBestRatedHotel(sd, ed);
+		ReservationFunctions9.findCheapestHotel(sd, ed);
+		ReservationFunctions9.getCheapestBestRatedHotel(sd, ed);
+		ReservationFunctions9.getBestRatedHotel(sd, ed);
 	}
 }
