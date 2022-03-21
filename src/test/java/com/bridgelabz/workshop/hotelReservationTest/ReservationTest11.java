@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.bridgelabz.workshop.hotelReservation.CustomerTypeException;
-import com.bridgelabz.workshop.hotelReservation.ReservationFunctions9;
+import com.bridgelabz.workshop.hotelReservation.CustomerTypeException11;
+import com.bridgelabz.workshop.hotelReservation.ReservationFunctions11;
 
-public class ReservationTest9 {
+public class ReservationTest11 {
 
 	/**
 	 * JUnit Testing purpose
@@ -18,15 +18,15 @@ public class ReservationTest9 {
 	@Test
 	public void given3Hotels_WhenRatesForRewardsCustomerAdded_ShouldReturnTheRates() {
 		
-		ReservationFunctions9.addHotel("Lakewood", 110, 90, 80, 80, 3);
-		ReservationFunctions9.addHotel("Bridgewood", 150, 50, 110, 50, 4);
-		ReservationFunctions9.addHotel("Ridgewood", 220, 150, 100, 40, 5);
+		ReservationFunctions11.addHotel("Lakewood", 110, 90, 80, 80, 3);
+		ReservationFunctions11.addHotel("Bridgewood", 150, 50, 110, 50, 4);
+		ReservationFunctions11.addHotel("Ridgewood", 220, 150, 100, 40, 5);
 		List<Integer> weekdayRateListRewards = new ArrayList<>();
 		List<Integer> weekendRateListRewards = new ArrayList<>();
-		ReservationFunctions9.hotelList.stream().forEach(hotelDetails -> {
+		ReservationFunctions11.hotelList.stream().forEach(hotelDetails -> {
 			weekdayRateListRewards.add(hotelDetails.getWeekdayRoomRateRewards());
 		});
-		ReservationFunctions9.hotelList.stream().forEach(hotelDetails -> {
+		ReservationFunctions11.hotelList.stream().forEach(hotelDetails -> {
 			weekendRateListRewards.add(hotelDetails.getWeekendRoomRateRewards());
 		});
 		Assert.assertEquals(80, (int) weekdayRateListRewards.get(0));
@@ -40,14 +40,14 @@ public class ReservationTest9 {
 	//UC-10
 	@Test
 	public void given3Hotels_WhenDateRangeProvidedForRewardsCustomer_ShouldReturnCheapestBestRatedHotel() {
-		ReservationFunctions9 hotelReservation = new ReservationFunctions9();
-		ReservationFunctions9.addHotel("Lakewood", 110, 90, 80, 80, 3);
-		ReservationFunctions9.addHotel("Bridgewood", 150, 50, 110, 50, 4);
-		ReservationFunctions9.addHotel("Ridgewood", 220, 150, 100, 40, 5);
+		ReservationFunctions11 hotelReservation = new ReservationFunctions11();
+		ReservationFunctions11.addHotel("Lakewood", 110, 90, 80, 80, 3);
+		ReservationFunctions11.addHotel("Bridgewood", 150, 50, 110, 50, 4);
+		ReservationFunctions11.addHotel("Ridgewood", 220, 150, 100, 40, 5);
 		try{
 			hotelReservation.typeOfCustomer("REWARDS");
 		}
-		catch(CustomerTypeException e) {
+		catch(CustomerTypeException11 e) {
 			e.printStackTrace();
 		}
 		String cheapestBestRatedHotelForRewards = hotelReservation.cheapestBestRatedHotelSelector("11 Sep 2020", "12 Sep 2020");
