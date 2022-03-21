@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ReservationFunctions11 {
+public class ReservationFunctions12 {
 	
 	/**
 	 *Procedure:-
@@ -33,13 +33,13 @@ public class ReservationFunctions11 {
 	/*
 	 * 1. Created an Array List
 	 */
-	public static ArrayList<HotelDetails11> hotelList = new ArrayList<>();
+	public static ArrayList<HotelDetails12> hotelList = new ArrayList<>();
 
 	/*
 	 * 2. getting hotel details into temporary object and adding into the array list
 	 */
 	public static void addHotel(String name, int weekdayRoomRateRegulare, int weekendRoomRateRegular,int weekdayRoomRateRewards,int weekendRoomRateRewards, int rating) {
-		HotelDetails11 temporary = new HotelDetails11(name, weekdayRoomRateRegulare, weekendRoomRateRegular, weekdayRoomRateRewards, weekendRoomRateRewards, rating);
+		HotelDetails12 temporary = new HotelDetails12(name, weekdayRoomRateRegulare, weekendRoomRateRegular, weekdayRoomRateRewards, weekendRoomRateRewards, rating);
 		hotelList.add(temporary);
 	}
 
@@ -48,7 +48,7 @@ public class ReservationFunctions11 {
 		return hotelList.size();
 	}
 
-	public static ArrayList<HotelDetails11> getHotelList() {
+	public static ArrayList<HotelDetails12> getHotelList() {
 		return hotelList;
 	}
 	
@@ -110,7 +110,7 @@ public class ReservationFunctions11 {
 		int noOfWeekdays = daysList.size() - noOfWeekends;
 		int minCost = hotelList.get(0).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(0).getWeekendRoomRateRegular() * noOfWeekends ;
 		
-		List<HotelDetails11> cheapestHotelList = new ArrayList<>();
+		List<HotelDetails12> cheapestHotelList = new ArrayList<>();
 		cheapestHotelList.add(hotelList.get(0));
 		for(int i = 1; i < hotelList.size(); i++) {
 			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends < minCost) {
@@ -122,7 +122,7 @@ public class ReservationFunctions11 {
 			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends == minCost)
 				cheapestHotelList.add(hotelList.get(i));
 		}
-		HotelDetails11 cheapestBestRatedHotel = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() -hotelTwo.getRating()).orElse(null);
+		HotelDetails12 cheapestBestRatedHotel = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() -hotelTwo.getRating()).orElse(null);
 		String cheapestBestRatedHotelInfo = cheapestBestRatedHotel.getHotelName() + ", Rating: " + cheapestBestRatedHotel.getRating() + ", Total Cost: $" + minCost;
 		System.out.println("Cheapest Best Rated Hotel :- " + cheapestBestRatedHotelInfo);
 		return cheapestBestRatedHotelInfo;
@@ -142,7 +142,7 @@ public class ReservationFunctions11 {
 		int noOfWeekends = (int) daysList.stream().filter(day -> 
 		day.equals(DayOfWeek.SATURDAY) || day.equals(DayOfWeek.SUNDAY)).count();
 		int noOfWeekdays = daysList.size() - noOfWeekends;
-		HotelDetails11 bestRatedHotel = hotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
+		HotelDetails12 bestRatedHotel = hotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
 		int bestRatedCost = bestRatedHotel.getWeekdayRoomRateRegular() * noOfWeekdays + bestRatedHotel.getWeekendRoomRateRegular() * noOfWeekends;
 		String bestRatedHotelInfo = bestRatedHotel.getHotelName() + ", Total Cost: $" + bestRatedCost;
 		System.out.println(bestRatedHotelInfo);
@@ -165,7 +165,7 @@ public class ReservationFunctions11 {
 			day.equals(DayOfWeek.SATURDAY) || day.equals(DayOfWeek.SUNDAY)).count();
 			int noOfWeekdays = daysList.size() - noOfWeekends;
 			int minCost = hotelList.get(0).getWeekdayRoomRateRewards() * noOfWeekdays + hotelList.get(0).getWeekendRoomRateRewards() * noOfWeekends ;
-			List<HotelDetails11> cheapestHotelList = new ArrayList<>();
+			List<HotelDetails12> cheapestHotelList = new ArrayList<>();
 			cheapestHotelList.add(hotelList.get(0));
 			//for and if used because we can have multiple hotels offering the same lowest total price until uc4
 			for(int i = 1; i < hotelList.size(); i++) {
@@ -178,21 +178,22 @@ public class ReservationFunctions11 {
 				if(hotelList.get(i).getWeekdayRoomRateRewards() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRewards() * noOfWeekends == minCost)
 					cheapestHotelList.add(hotelList.get(i));
 			}
-			HotelDetails11 cheapestBestRatedHotelForRewards = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
+			HotelDetails12 cheapestBestRatedHotelForRewards = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
 			cheapestBestRatedHotelForRewardsInfo = cheapestBestRatedHotelForRewards.getHotelName() + ", Rating: " + cheapestBestRatedHotelForRewards.getRating() + ", Total Cost: $" + minCost;
 		} catch (DateTimeParseException e) {
 			e.printStackTrace();
 			System.out.println("The format of dates(s) entered is incorrect!");
 		}
+		System.out.println(cheapestBestRatedHotelForRewardsInfo);
 		return cheapestBestRatedHotelForRewardsInfo;
 	}
 
-	public void typeOfCustomer(String typeOfCustomer) throws CustomerTypeException11 {
+	public void typeOfCustomer(String typeOfCustomer) throws CustomerTypeException12 {
 		if(CustomerType.REGULAR.name().equals(typeOfCustomer))
 			this.typeOfCustomer = CustomerType.REGULAR;
 		else if(CustomerType.REWARDS.name().equals(typeOfCustomer))
 			this.typeOfCustomer = CustomerType.REWARDS;
-		else throw new CustomerTypeException11("Please enter only REGULAR or REWARDS!");
+		else throw new CustomerTypeException12("Please enter only REGULAR or REWARDS!");
 	}
 
 	public String cheapestBestRatedHotelSelector(String startDate, String endDate) {
