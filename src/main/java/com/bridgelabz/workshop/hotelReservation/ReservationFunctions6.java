@@ -20,6 +20,8 @@ public class ReservationFunctions6 {
 	 *2. Created a method to Add the hotel Details in the list
 	 *3. Created a method to display the list 
 	 *4. Created a method to find the cheapest rate of hotels in given duration including weekday and weekend rate
+	 *5. Created a method to find the Cheapest BestRated hotel in given duration including weekday and weekend rate
+	 *6. Created a method to find the Best rated hotel in given duration including weekday and weekend rate
 	 */
 	
 	
@@ -86,6 +88,11 @@ public class ReservationFunctions6 {
 		System.out.println("Cheapest Hotel " + cheapestHotelInfo);
 		return cheapestHotelInfo;
 	}
+	
+	/*
+	 *  UC6
+	 *  5. Created a method to find the Cheapest BestRated hotel in given duration including weekday and weekend rate
+	 */
 	public static String getCheapestBestRatedHotel(String startDate, String endDate) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 		LocalDate startDateInput = LocalDate.parse(startDate, dateFormat);
@@ -114,6 +121,11 @@ public class ReservationFunctions6 {
 		System.out.println("Cheapest Best Rated Hotel :- " + cheapestBestRatedHotelInfo);
 		return cheapestBestRatedHotelInfo;
 	}
+	
+	/*
+	 *  UC7
+	 *  6. Created a method to find the best rated hotel in given duration including weekday and weekend rate
+	 */
 	public static String getBestRatedHotel(String startDate, String endDate) {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 		LocalDate startDateInput = LocalDate.parse(startDate, dateFormat);
