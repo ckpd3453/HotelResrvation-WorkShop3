@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ReservationFunctions6 {
+public class ReservationFunctions7 {
 	
 	/**
 	 *Procedure:-
@@ -28,13 +28,13 @@ public class ReservationFunctions6 {
 	/*
 	 * 1. Created an Array List
 	 */
-	public static ArrayList<HotelDetails6> hotelList = new ArrayList<>();
+	public static ArrayList<HotelDetails7> hotelList = new ArrayList<>();
 
 	/*
 	 * 2. getting hotel details into temporary object and adding into the array list
 	 */
-	public static void addHotel(String name, int weekdayRate, int weekendRate, int rating) {
-		HotelDetails6 temporary = new HotelDetails6(name, weekdayRate, weekendRate, rating);
+	public static void addHotel(String name, int weekdayRoomRateRegulare, int weekendRoomRateRegular,int weekdayRoomRateRewards,int weekendRoomRateRewards, int rating) {
+		HotelDetails7 temporary = new HotelDetails7(name, weekdayRoomRateRegulare, weekendRoomRateRegular, weekdayRoomRateRewards, weekendRoomRateRewards, rating);
 		hotelList.add(temporary);
 	}
 
@@ -43,7 +43,7 @@ public class ReservationFunctions6 {
 		return hotelList.size();
 	}
 
-	public static ArrayList<HotelDetails6> getHotelList() {
+	public static ArrayList<HotelDetails7> getHotelList() {
 		return hotelList;
 	}
 	
@@ -69,19 +69,19 @@ public class ReservationFunctions6 {
 		int noOfWeekends = (int) daysList.stream().filter(day -> 
 		day.equals(DayOfWeek.SATURDAY) || day.equals(DayOfWeek.SUNDAY)).count();
 		int noOfWeekdays = daysList.size() - noOfWeekends;
-		int minCost = hotelList.get(0).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(0).getWeekendHotelRate() * noOfWeekends ;
+		int minCost = hotelList.get(0).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(0).getWeekendRoomRateRegular() * noOfWeekends ;
 		List<String> cheapestHotelNameList = new ArrayList<>();
-		cheapestHotelNameList.add(hotelList.get(0).getName());
+		cheapestHotelNameList.add(hotelList.get(0).getHotelName());
 
 		for(int i = 1; i < hotelList.size(); i++) {
-			if(hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends < minCost) {
-				minCost = hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends;
+			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends < minCost) {
+				minCost = hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends;
 				for(int j = 0; j < cheapestHotelNameList.size(); j++) 
 					cheapestHotelNameList.remove(j);
-				cheapestHotelNameList.add(hotelList.get(i).getName());
+				cheapestHotelNameList.add(hotelList.get(i).getHotelName());
 			}
-			if(hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends == minCost)
-				cheapestHotelNameList.add(hotelList.get(i).getName());
+			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends == minCost)
+				cheapestHotelNameList.add(hotelList.get(i).getHotelName());
 		}
 		String hotelNameString = cheapestHotelNameList.stream().collect(Collectors.joining(", "));
 		String cheapestHotelInfo = hotelNameString + " Total Cost: $" + minCost;
@@ -103,21 +103,22 @@ public class ReservationFunctions6 {
 		int noOfWeekends = (int) daysList.stream().filter(day -> 
 		day.equals(DayOfWeek.SATURDAY) || day.equals(DayOfWeek.SUNDAY)).count();
 		int noOfWeekdays = daysList.size() - noOfWeekends;
-		int minCost = hotelList.get(0).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(0).getWeekendHotelRate() * noOfWeekends ;
-		List<HotelDetails6> cheapestHotelList = new ArrayList<>();
+		int minCost = hotelList.get(0).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(0).getWeekendRoomRateRegular() * noOfWeekends ;
+		
+		List<HotelDetails7> cheapestHotelList = new ArrayList<>();
 		cheapestHotelList.add(hotelList.get(0));
 		for(int i = 1; i < hotelList.size(); i++) {
-			if(hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends < minCost) {
-				minCost = hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends;
+			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends < minCost) {
+				minCost = hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends;
 				for(int j = 0; j < cheapestHotelList.size(); j++) 
 					cheapestHotelList.remove(j);
 				cheapestHotelList.add(hotelList.get(i));
 			}
-			if(hotelList.get(i).getWeekdayHotelRate() * noOfWeekdays + hotelList.get(i).getWeekendHotelRate() * noOfWeekends == minCost)
+			if(hotelList.get(i).getWeekdayRoomRateRegular() * noOfWeekdays + hotelList.get(i).getWeekendRoomRateRegular() * noOfWeekends == minCost)
 				cheapestHotelList.add(hotelList.get(i));
 		}
-		HotelDetails6 cheapestBestRatedHotel = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() -hotelTwo.getRating()).orElse(null);
-		String cheapestBestRatedHotelInfo = cheapestBestRatedHotel.getName() + ", Rating: " + cheapestBestRatedHotel.getRating() + ", Total Cost: $" + minCost;
+		HotelDetails7 cheapestBestRatedHotel = cheapestHotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() -hotelTwo.getRating()).orElse(null);
+		String cheapestBestRatedHotelInfo = cheapestBestRatedHotel.getHotelName() + ", Rating: " + cheapestBestRatedHotel.getRating() + ", Total Cost: $" + minCost;
 		System.out.println("Cheapest Best Rated Hotel :- " + cheapestBestRatedHotelInfo);
 		return cheapestBestRatedHotelInfo;
 	}
@@ -136,9 +137,9 @@ public class ReservationFunctions6 {
 		int noOfWeekends = (int) daysList.stream().filter(day -> 
 		day.equals(DayOfWeek.SATURDAY) || day.equals(DayOfWeek.SUNDAY)).count();
 		int noOfWeekdays = daysList.size() - noOfWeekends;
-		HotelDetails6 bestRatedHotel = hotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
-		int bestRatedCost = bestRatedHotel.getWeekdayHotelRate() * noOfWeekdays + bestRatedHotel.getWeekendHotelRate() * noOfWeekends;
-		String bestRatedHotelInfo = bestRatedHotel.getName() + ", Total Cost: $" + bestRatedCost;
+		HotelDetails7 bestRatedHotel = hotelList.stream().max((hotelOne, hotelTwo) -> hotelOne.getRating() - hotelTwo.getRating()).orElse(null);
+		int bestRatedCost = bestRatedHotel.getWeekdayRoomRateRegular() * noOfWeekdays + bestRatedHotel.getWeekendRoomRateRegular() * noOfWeekends;
+		String bestRatedHotelInfo = bestRatedHotel.getHotelName() + ", Total Cost: $" + bestRatedCost;
 		System.out.println(bestRatedHotelInfo);
 		return bestRatedHotelInfo;
 	}
